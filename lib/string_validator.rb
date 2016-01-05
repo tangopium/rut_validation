@@ -6,12 +6,12 @@ class String
   # calculates/validate the digit
   # @return [true, false]
   def rut_valid?
-    if not(self =~ /\A(\d{7,8})\-(\d{1}|k|K)\Z/i) and not(self =~ /\A(\d{1,3})\.(\d{1,3})\.(\d{1,3})\-(k|K|\d{1})\Z/)
+    if not(self =~ /\A(\d{1,8})\-(\d{1}|k|K)\Z/i)
       return false
     end
 
     results = Array.new
-    rut = self.strip.split("-").first.delete(".").to_i
+    rut = self.strip.split("-").first.to_i
     numerical_serie = 2
 
     while rut > 0
